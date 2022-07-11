@@ -23,16 +23,16 @@ export default function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, o
             </section>
             <section className="elements">
                 <ul className="elements__list">
-                    {cards
-                        ? Array.from(cards).map((card) => {
-                            return (<Card card={card}
-                                key={card._id}
-                                onCardClick={onCardClick}
-                                onCardLike={onCardLike}
-                                onCardDelete={onCardDelete}
-                            />)
-                        })
-                        : null}
+                    {cards.map((card) => (
+                        <Card
+                            key={card._id}
+                            card={card}
+                            onCardClick={onCardClick}
+                            onCardLike={onCardLike}
+                            onCardDelete={onCardDelete}
+                        >
+                        </Card>
+                    ))}
                 </ul>
             </section>
         </main>

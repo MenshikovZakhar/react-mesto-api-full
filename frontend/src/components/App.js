@@ -43,16 +43,31 @@ function App() {
 
   //данные с сервера информации о пользователе и карточек на страницу
   useEffect(() => {
-    if (loggedIn)
-      Promise.all([api.getUserProfile(), api.getInitialCards()])
-        .then(([userData, cards]) => {
-          setCurrentUser(userData);
-          setCards(cards);
+    if (loggedIn) {
+      history.push('/');
+      api
+        .getUserProfile()
+        .then((res) => {
+          setCurrentUser({
+            name: res.data.name,
+            about: res.data.about,
+            avatar: res.data.avatar,
+            _id: res.data._id,
+          });
         })
-        .catch((error) => {
-          console.log(error);
+        .catch((err) => {
+          console.log(err);
         });
-  }, [loggedIn])
+      api
+        .getInitialCards()
+        .then((res) => {
+          setCards(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+  }, [loggedIn]);
 
   useEffect(() => {
     const jwt = localStorage.getItem('token');
@@ -103,7 +118,7 @@ function App() {
 
   //установка лайков
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((res) => {
         setCards((state) => state.map((c) => c._id === card._id ? res : c));

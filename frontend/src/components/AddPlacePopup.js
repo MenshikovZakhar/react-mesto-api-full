@@ -25,7 +25,10 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoadingData }) {
     //обработчик сабмита формы
     const handleSubmit = (e) => {
         e.preventDefault();
-        onAddPlace({ name, link });
+        onAddPlace({
+            name: name,
+            link: link
+        });
         setName('');
         setLink('');
     };
