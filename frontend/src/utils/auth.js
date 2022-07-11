@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://api.mesto-full.nomoredomains.xyz";
 
 function handleCheckResponse(res) {
     if (res.ok) {

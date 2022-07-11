@@ -103,7 +103,7 @@ export default class Api {
 
 //подключение апи
 export const api = new Api({
-    baseUrl: 'http://localhost:3001',
+    baseUrl: 'https://api.mesto-full.nomoredomains.xyz',
     headers: {
         'content-type': 'application/json'
     }
