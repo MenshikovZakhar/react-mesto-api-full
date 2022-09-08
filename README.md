@@ -27,7 +27,7 @@
 7. Предварительный просмотр полноразмерного изображения
 
 ## :hammer: Стэк технологий
-Node.js;
-React.js;
-MongoDB;
-Express.js.
+1. Node.js;
+2.React.js;
+3. MongoDB;
+4. Express.js.
